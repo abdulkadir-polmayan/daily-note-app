@@ -1,23 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import { FcAutomatic } from "react-icons/fc";
 
 function App() {
+
+  const [noteData,setNoteData]=React.useState([])
+
+  function takeNote(e){
+    setNoteData(x=>{e.target.value})
+  }
+
+  function note(){
+    if(noteData.length > 1){
+      return (
+        noteData.map(x=>{
+          return <h2>{x}</h2>
+        })
+      )
+    }else{
+      console.log("ghjk")
+    }
+  }
+
+  note()
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <textarea onChange={takeNote} />
+
+      
     </div>
   );
 }
