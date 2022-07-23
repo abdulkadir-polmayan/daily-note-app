@@ -1,24 +1,30 @@
 import React from 'react';
 
 export default function(props){
-    
-    
+
     const [newNote, setNewNote]=React.useState("")
+    const characterLimit=200;
 
     function handleChange(e){
-        setNewNote(e.target.value)
+        if(characterLimit-newNote.length>0){
+            setNewNote(e.target.value)
+        }
     }
     
     function saveBtn(){
-        props.newNote(newNote)
+        if(newNote.trim().length>0){
+            setNewNote("")
+            props.newNote(newNote)
+        }else{alert("please type something")}
     }
     
     
     return(
-        <div>
-            <textarea onChange={handleChange} />
+        <div className='newNote'>
+            <textarea value={newNote} onChange={handleChange} />
             <div className='footer'>
-                <button onClick={saveBtn}>save</button>
+                <button className={props.class} onClick={saveBtn}>save</button>
+                <span>{characterLimit-newNote.length}</span>
             </div>
         </div>
     )

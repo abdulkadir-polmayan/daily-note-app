@@ -1,11 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 *{
     background: #fafafa;
     font-family: 'Roboto', sans-serif;
+    background-color: transparent;
+
     
 }
 
 .note{
-    background: rgb(227, 220, 100);
+    background: rgb(255, 251, 173);
     padding: 20px;
     border-radius: 3px;
     margin-bottom: 20px;
@@ -13,12 +18,16 @@
         font-size: 1.5em;
         font-weight: bold;
         margin: 0;
-        background-color: transparent;
     }
     h3{
         font-size: 1em;
         font-weight: bold;
         margin: 0;
-        background-color: transparent;
     }
+}
+.dlt{
+}
+
+.newNote{
+    
 }
