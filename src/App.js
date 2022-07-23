@@ -1,34 +1,46 @@
-import './App.css';
+import './App.scss';
 import React from 'react';
 import { FcAutomatic } from "react-icons/fc";
+import {nanoid} from 'nanoid'
+import Note from './components/Note';
+import AddNote from './components/AddNote'
 
 function App() {
 
-  const [noteData,setNoteData]=React.useState([])
+  const [noteData,setNoteData]=React.useState([{
+    id:nanoid(),
+    text:"sample 1",
+    date:"21.02.2022"
+  },{
+    id:nanoid(),
+    text:"sample 3",
+    date:"21.02.2022"
+  },{
+    id:nanoid(),
+    text:"sample 2",
+    date:"21.02.2022"
+  },])
 
-  function takeNote(e){
-    setNoteData(x=>{e.target.value})
+  
+  const notes=noteData.map(item=>{
+    return (
+      <Note 
+        text={item.text}
+        date={item.date}
+        id={item.id}
+      />
+    )
+  })
+
+  function newNote(newNote){
+    console.log(newNote)
   }
 
-  function note(){
-    if(noteData.length > 1){
-      return (
-        noteData.map(x=>{
-          return <h2>{x}</h2>
-        })
-      )
-    }else{
-      console.log("ghjk")
-    }
-  }
-
-  note()
-
+  
   return (
     <div className="App">
-      <textarea onChange={takeNote} />
-
-      
+      {notes}
+      <AddNote newNote={newNote} />
     </div>
   );
 }
