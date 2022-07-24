@@ -1,5 +1,5 @@
 import React from 'react';
-import { FcAutomatic,MdDelete } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 
 export default function Note(props){
     return(
