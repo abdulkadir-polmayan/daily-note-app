@@ -11,23 +11,36 @@ function App() {
 
   const [noteData,setNoteData]=React.useState([{
     id: Math.random(),
-    text:"sample 1",
-    date:"21.02.2022"
+    headline:"sample 1",
+    innerText:"lorem ipsum sit dolar ametlorem ipsum sit dolar amet",
+    date:"25.02.2022"
   },{
     id:Math.random(),
-    text:"sample 3",
-    date:"21.02.2022"
+    headline:"sample 3",
+    innerText:"lorem ipsum sit dolar amet",
+    date:"25.02.2022"
   },{
     id:Math.random(),
-    text:"sample 2",
-    date:"21.02.2022"
+    headline:"sample 2",
+    innerText:"",
+    date:"24.02.2022"
+  },{
+    id:Math.random(),
+    headline:"sample 4",
+    innerText:"lorem ipsum sit dolar amet",
+    date:"24.02.2022"
+  },{
+    id:Math.random(),
+    headline:"sample 5",
+    innerText:"",
+    date:"24.02.2022"
+  },{
+    id:Math.random(),
+    headline:"sample 6",
+    innerText:"lorem ipsum sit dolar amet",
+    date:"23.02.2022"
   },])
   const [newNoteDataArr,setNewNoteDataArr]=React.useState([])
-
-  React.useEffect(()=>{
-    setNewNoteDataArr(noteData)
-  },[noteData])
-
 
   //* local storage get notes
   React.useEffect(()=>{
@@ -36,12 +49,20 @@ function App() {
 
       setNoteData(localNotes)
     }
+    console.log(localNotes)
   },[])
+
+  React.useEffect(()=>{
+    setNewNoteDataArr(noteData)
+  },[noteData])
+
+
 
   //* local storage set notes
   React.useEffect(()=>{
-    localStorage.setItem('react-note-app-data',JSON.stringify(noteData))
-  },[noteData])
+    if (noteData) { // added if check, to check wether noteData variable has value if yes then set the value in localStorage else not.
+      localStorage.setItem('react-note-app-data',JSON.stringify(noteData))
+  }  },[noteData])
    
 
   //* notes
@@ -49,7 +70,8 @@ function App() {
     
     return (
       <Note 
-        text={item.text}
+        headline={item.headline}
+        innerText={item.innerText}
         date={item.date}
         id={item.id}
         dltNote={dltNote}
@@ -63,7 +85,7 @@ function App() {
     const date = new Date()
     const newNoteObject={
       id:Math.random(),
-      text:newNote,
+      headline:newNote,
       date:date.toLocaleDateString()
     }
     const newNotesArr=[...noteData,newNoteObject]
@@ -82,18 +104,24 @@ function App() {
   //* Search note
   function searchNote(text){
     console.log(text)
-    const newNotesArr=noteData.filter((note)=> note.text.toLowerCase().includes(text))
+    const newNotesArr=noteData.filter((note)=> note.headline.toLowerCase().includes(text))
     setNewNoteDataArr(newNotesArr)
   }
   
 
   return (
     <div className="App">
-      <Search 
-        searchNote={searchNote}
-        />
+      <div className='phone'>
+
+      <Search searchNote={searchNote}/>
+      <div className='notes'>
       {notes}
-      <AddNote newNote={newNote} class="bg-red-250" />
+
+      </div>
+
+      <AddNote newNote={newNote} />
+
+      </div>
  </div>
   );
 }
