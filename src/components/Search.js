@@ -9,7 +9,7 @@ export default function Search(props){
     return(
         <div className='search'>
             <div className='input'>
-                <input onChange={searchNote} className='search' />
+                <input placeholder='search...' onChange={searchNote} className='search' />
             </div>
         </div>
     )

@@ -1,3 +1,79 @@
 body{
-    margin:0
+    margin:0;
+    font-family: 'Montserrat';
+}
+
+.App{
+}
+
+  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-weight: 500;
+    font-size: large;
+    text-transform: uppercase;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    font-weight: 500;
+    font-size: large;
+    text-transform: uppercase;
+
+  }
+
+.search{
+    position: sticky;
+    top: 0px;
+    background-color: rgb(255, 255, 255);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    .input{
+        input{
+            position: sticky;
+            top: 5px;
+            background-color: rgb(199, 199, 199);
+            padding: 0.5rem 0.5rem 0.5rem 1rem ;
+            border: 0;
+            border-radius: 0.3rem;
+        
+
+        
+        }
+    }
+    
+}
+
+.notes-conteiner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .notes{
+        background-color: rgb(204, 186, 186);
+        width: 60vw;
+        display: grid;
+        grid-template:"a b c";
+
+        .note{
+            background-color: rgb(241, 235, 114);
+            display: flex;
+            flex-direction: column;
+            max-width: 15rem;
+            border-radius: 1rem;
+            padding: 0rem 1rem 0rem 1rem;
+            margin: 0.5rem;
+
+    
+        }
+    
+    }
+
+    
+}
+
+
+.addNote{
+    background-color: bisque;
+    position: sticky;
+    bottom: 5px;
 }

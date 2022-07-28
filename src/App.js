@@ -12,7 +12,7 @@ function App() {
   const [noteData,setNoteData]=React.useState([{
     id: Math.random(),
     headline:"sample 1",
-    innerText:"lorem ipsum sit dolar ametlorem ipsum sit dolar amet",
+    innerText:"lorem ipsum sit dolar ametlorem ipsum sit dolar ametghbjknlmşöds asopıhgpduhfgopa doırg oıdsğoınrgh ğıhsğoın ğoısğ orıo sğı oo ",
     date:"25.02.2022"
   },{
     id:Math.random(),
@@ -114,9 +114,14 @@ function App() {
 
       <Search searchNote={searchNote}/>
 
-      <div className='notes'>
-      
-      {notes}
+      <div className='notes-conteiner'>
+        <div className='notes'>
+          {notes}
+          {notes}
+          {notes}
+          {notes}
+ 
+        </div>
 
       </div>
 
