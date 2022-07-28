@@ -20,8 +20,11 @@ export default function(props){
     
     
     return(
-        <div className='newNote'>
-            <textarea value={newNote} onChange={handleChange} />
+        <div className='addNote'>
+            <div>
+                <textarea value={newNote} onChange={handleChange} />
+            </div>
+            
             <div className='footer'>
                 <button className={props.class} onClick={saveBtn}>save</button>
                 <span>{characterLimit-newNote.length}</span>

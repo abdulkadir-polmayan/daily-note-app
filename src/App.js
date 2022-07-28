@@ -111,18 +111,18 @@ function App() {
 
   return (
     <div className="App">
-      <div className='phone'>
 
       <Search searchNote={searchNote}/>
+
       <div className='notes'>
+      
       {notes}
 
       </div>
 
       <AddNote newNote={newNote} />
 
-      </div>
- </div>
+   </div>
   );
 }
 

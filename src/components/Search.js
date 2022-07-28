@@ -7,11 +7,10 @@ export default function Search(props){
    }
 
     return(
-        <div>
-            <input onChange={searchNote} className='search' />
-            <button>find   </button>
-            <span></span>
-            <button>   vazgeç</button>
+        <div className='search'>
+            <div className='input'>
+                <input onChange={searchNote} className='search' />
+            </div>
         </div>
     )
 }
