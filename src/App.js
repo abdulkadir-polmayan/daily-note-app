@@ -1,7 +1,5 @@
 import './App.scss';
 import React from 'react';
-import { FcAutomatic,MdDelete } from "react-icons/md";
-import {nanoid} from 'nanoid'
 import Note from './components/Note';
 import AddNote from './components/AddNote'
 import Search from './components/Search';
@@ -13,7 +11,7 @@ function App() {
     id: Math.random(),
     headline:"sample 1",
     innerText:"lorem ipsum sit dolar ametlorem ipsum sit dolar ametghbjknlmşöds asopıhgpduhfgopa doırg oıdsğoınrgh ğıhsğoın ğoısğ orıo sğı oo ",
-    date:"25.02.2022"
+    date:"7/29/2022"
   },{
     id:Math.random(),
     headline:"sample 3",
@@ -33,12 +31,12 @@ function App() {
     id:Math.random(),
     headline:"sample 5",
     innerText:"",
-    date:"24.02.2022"
+    date:"7/29/2022"
   },{
     id:Math.random(),
     headline:"sample 6",
     innerText:"lorem ipsum sit dolar amet",
-    date:"23.02.2022"
+    date:"7/29/2022"
   },])
   const [secondNoteData,setSecondNoteData]=React.useState([])
 
@@ -66,17 +64,36 @@ function App() {
 
   //* notes
 
-  const notess= secondNoteData.filter((item)=>{
-    return item.date== "25.02.2022"
-    //* this return based on spesicfic date
-    //* ı wanna grupize depends on date.
-    })
+  // const notess= secondNoteData.filter((item)=>{
+  //   return item.date== "25.02.2022"
+  //   //* this return based on spesicfic date
+  //   //* ı wanna grupize depends on date.
+  //   })
 
-    console.log(notess)
+  //   console.log(notess)
 
+//   const notess = secondNoteData.reduce((acc, item) => {
+//     const date = item.date;
+//     acc[date] = acc[date] ? acc.date.push(item) : [item];
+//     return acc;
+// }, {})
 
-  const notes=secondNoteData.map(item=>{
-    
+//   console.log(notess)
+
+// const notess = secondNoteData.map(item=>{
+//   if(item.date = )
+// })
+
+ //* look date and make grup depends date 
+  //* if dates same make same grup 
+  //* and get date of this grup and display 
+  //! actually ı managed to make today note grup 
+  //! and yesterday and before grup 
+
+const todayNotes=secondNoteData.map(item=>{
+  const date=new Date()
+  console.log(date.toLocaleDateString())
+  if(item.date===date.toLocaleDateString()){
     return (
       <Note 
         headline={item.headline}
@@ -86,8 +103,24 @@ function App() {
         dltNote={dltNote}     
       />
     )
-  })
+  }
+})
 
+
+const yesterdayNotes=secondNoteData.map(item=>{
+  const date=new Date()
+  console.log(date.toLocaleDateString())
+  if(item.date===date.toLocaleDateString()){
+  }else{return (
+    <Note 
+      headline={item.headline}
+      innerText={item.innerText}
+      date={item.date}
+      id={item.id}
+      dltNote={dltNote}     
+    />
+  )}
+})
   
 
   //* Add new note
@@ -118,10 +151,7 @@ function App() {
     setSecondNoteData(newNotesArr)
   }
 
-  //* look date and make grup depends date 
-  //* if dates same make same grup 
-  //* and get date of this grup and display 
-  //*
+ 
   
 
   return (
@@ -131,7 +161,8 @@ function App() {
 
       <div className='notes-conteiner'>
         <div className='notes'>
-          {notes}
+            {todayNotes}
+            {yesterdayNotes}
           
  
         </div>
