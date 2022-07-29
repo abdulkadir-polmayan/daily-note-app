@@ -40,7 +40,7 @@ function App() {
     innerText:"lorem ipsum sit dolar amet",
     date:"23.02.2022"
   },])
-  const [newNoteDataArr,setNewNoteDataArr]=React.useState([])
+  const [secondNoteData,setSecondNoteData]=React.useState([])
 
   //* local storage get notes
   React.useEffect(()=>{
@@ -53,10 +53,8 @@ function App() {
   },[])
 
   React.useEffect(()=>{
-    setNewNoteDataArr(noteData)
+    setSecondNoteData(noteData)
   },[noteData])
-
-
 
   //* local storage set notes
   React.useEffect(()=>{
@@ -64,9 +62,20 @@ function App() {
       localStorage.setItem('react-note-app-data',JSON.stringify(noteData))
   }  },[noteData])
    
+  //* item return new array depends date 
 
   //* notes
-  const notes=newNoteDataArr.map(item=>{
+
+  const notess= secondNoteData.filter((item)=>{
+    return item.date== "25.02.2022"
+    //* this return based on spesicfic date
+    //* ı wanna grupize depends on date.
+    })
+
+    console.log(notess)
+
+
+  const notes=secondNoteData.map(item=>{
     
     return (
       <Note 
@@ -74,11 +83,12 @@ function App() {
         innerText={item.innerText}
         date={item.date}
         id={item.id}
-        dltNote={dltNote}
-        
+        dltNote={dltNote}     
       />
     )
   })
+
+  
 
   //* Add new note
   function newNote(newNote){
@@ -105,8 +115,13 @@ function App() {
   function searchNote(text){
     console.log(text)
     const newNotesArr=noteData.filter((note)=> note.headline.toLowerCase().includes(text))
-    setNewNoteDataArr(newNotesArr)
+    setSecondNoteData(newNotesArr)
   }
+
+  //* look date and make grup depends date 
+  //* if dates same make same grup 
+  //* and get date of this grup and display 
+  //*
   
 
   return (
@@ -117,9 +132,7 @@ function App() {
       <div className='notes-conteiner'>
         <div className='notes'>
           {notes}
-          {notes}
-          {notes}
-          {notes}
+          
  
         </div>
 
